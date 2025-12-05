@@ -20,6 +20,7 @@ dependencies = [
     "networkx",
     "matplotlib",
     "black",
+    "intervaltree",
 ]
 requires-python = ">=3.14"
 authors = [
