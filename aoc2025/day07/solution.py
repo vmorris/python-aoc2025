@@ -29,34 +29,34 @@ class TachyonManifold:
         prev_row = list(self.manifold[self.row_index])
         self.row_index += 1
         _row = list(self.manifold[self.row_index])
-        logger.info(f"1. row_index: {self.row_index}, row: {_row}")
+        # logger.info(f"1. row_index: {self.row_index}, row: {_row}")
         for i, element in enumerate(_row):
             if element == "^" and type(prev_row[i]) == int:
                 if type(_row[i - 1]) == int:
-                    logger.info(
-                        f"  Found int on left side of split. index: {i-1}, element: {_row[i-1]}"
-                    )
+                    # logger.info(
+                    # f"  Found int on left side of split. index: {i-1}, element: {_row[i-1]}"
+                    # )
                     _row[i - 1] += prev_row[i]
-                    logger.info(f"2. row_index: {self.row_index}, row: {_row}")
+                    # logger.info(f"2. row_index: {self.row_index}, row: {_row}")
                 else:
                     _row[i - 1] = prev_row[i] + 1
-                    logger.info(f"3. row_index: {self.row_index}, row: {_row}")
+                    # logger.info(f"3. row_index: {self.row_index}, row: {_row}")
                 _row[i + 1] = prev_row[i] + 1
-                logger.info(f"4. row_index: {self.row_index}, row: {_row}")
+                # logger.info(f"4. row_index: {self.row_index}, row: {_row}")
                 split_count += 1
             if element == "." and type(prev_row[i]) == int:
                 _row[i] = prev_row[i]
-                logger.info(f"5. row_index: {self.row_index}, row: {_row}")
+                # logger.info(f"5. row_index: {self.row_index}, row: {_row}")
         self.manifold[self.row_index] = _row
         # time
         prev_row = list(self.manifold[self.row_index])
         self.row_index += 1
         _row = list(self.manifold[self.row_index])
-        logger.info(f"A. row_index: {self.row_index}, row: {_row}")
+        # logger.info(f"A. row_index: {self.row_index}, row: {_row}")
         for i, element in enumerate(_row):
             if type(prev_row[i]) == int:
                 _row[i] = prev_row[i]
-                logger.info(f"B. row_index: {self.row_index}, row: {_row}")
+                # logger.info(f"B. row_index: {self.row_index}, row: {_row}")
         self.manifold[self.row_index] = _row
 
         return split_count, timeline_count
@@ -87,19 +87,14 @@ def solve_part2(entries):
     result = 0
     for row_index, row in enumerate(manifold2.manifold):
         _row = copy.copy(row)
-        for i, element in enumerate(_row):
-            if element == ".":
-                _row[i] = 0
         manifold2.manifold[row_index] = _row
 
-    print(manifold2)
     try:
         while True:
             _, timeline = manifold2.step_beam()
             result += timeline
     except IndexError:
         pass
-    print(manifold2)
     # pprint(manifold.manifold)
     # 3125 too low - test passes
     # 4554 too low - test fails now (too high), 4555 is too low too
