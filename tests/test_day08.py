@@ -2,12 +2,12 @@ from aoc2025.day08 import solution
 from aoc2025.util import get_input
 
 
-input_data = get_input("tests/testinput.day08")
+input_data = get_input("tests/testinput.day08", type="csv-ints")
 
 
 def test_solve_part1():
-    expected = None
-    actual = solution.solve_part1(input_data)
+    expected = 40
+    actual = solution.solve_part1(input_data, 10)
     assert expected == actual
 
 
