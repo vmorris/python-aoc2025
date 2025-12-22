@@ -12,6 +12,6 @@ def test_solve_part1():
 
 
 def test_solve_part2():
-    expected = None
+    expected = 25272
     actual = solution.solve_part2(input_data)
     assert expected == actual

@@ -31,7 +31,7 @@ def get_input(f, type="str"):
             return [i.split(",") for i in input]
         if type == "csv-ints":
             """list of lists of integers, split on commas"""
-            return [[int(j) for j in i.split(",")] for i in input]
+            return [tuple(int(j) for j in i.split(",")) for i in input]
         if type == "int-matrix":
             """matrix, list of lists converted to integers"""
             result = list()
